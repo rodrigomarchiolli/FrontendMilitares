@@ -6,15 +6,16 @@ import { tokens } from "../../theme";
 import  HomeOutlinedIcon  from "@mui/icons-material/HomeOutlined";
 import  PeopleOutlinedIcon  from "@mui/icons-material/PeopleOutlined";
 import  ContactsOutlinedIcon  from "@mui/icons-material/ContactsOutlined";
-import  ReceiptOutlinedIcon  from "@mui/icons-material/ReceiptOutlined";
+// import  ReceiptOutlinedIcon  from "@mui/icons-material/ReceiptOutlined";
 import  CalendarTodayOutlinedIcon  from "@mui/icons-material/CalendarTodayOutlined";
 import  HelpOutlinedIcon  from "@mui/icons-material/HelpOutlined";
 import  PieChartOutlineOutlinedIcon  from "@mui/icons-material/PieChartOutlineOutlined";
 import  TimelineOutlinedIcon  from "@mui/icons-material/TimelineOutlined";
 import  MapOutlinedIcon  from "@mui/icons-material/MapOutlined";
-import  PersonOutlinedIcon  from "@mui/icons-material/PersonOutlined";
+// import  PersonOutlinedIcon  from "@mui/icons-material/PersonOutlined";
 import  BarChartOutlinedIcon  from "@mui/icons-material/MapOutlined";
 import  GroupRemoveIcon from '@mui/icons-material/GroupRemove';
+import  PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 
 
 const Item =({ title, to, icon, selected, setSelected}) =>{
@@ -64,9 +65,9 @@ const All_Item=()=>{
             />
 
             <Item
-                title = "Invoices Balances"
-                to ="/invoices"
-                icon={<ReceiptOutlinedIcon/>}
+                title = "Adicionar Pessoa"
+                to ="/form"
+                icon={<PersonAddAlt1Icon/>}
                 selected={selected}
                 setSelected={setSelected}
             />

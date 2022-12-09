@@ -8,8 +8,8 @@ import Dashboard from "./scenes/dashboard";
 import Aposentadoria from "./scenes/aposentadoria";
 import Alocacao from "./scenes/alocacao";
 import RemovePrs from "./scenes/removeprs";
+import Form from "./scenes/form";
 // import Bar from "./scenes/bar";
-// import Form from "./scenes/form";
 // import Line from "./scenes/line";
 // import Pie from "./scenes/pie";
 // import FAQ from "./scenes/faq";
@@ -36,7 +36,7 @@ function App() {
               <Route path ="/aposentadoria" element ={<Aposentadoria/>}/>
               <Route path ="/alocacao" element ={<Alocacao/>}/>
               <Route path ="/removeprs" element ={<RemovePrs/>}/>
-              {/* <Route path ="/form" element ={<Form/>}/> */}
+              <Route path ="/form" element ={<Form/>}/>
               {/* <Route path ="/bar" element ={<Bar/>}/> */}
               {/* <Route path ="/pie" element ={<Pie/>}/> */}
               {/* <Route path ="/line" element ={<Line/>}/> */}
