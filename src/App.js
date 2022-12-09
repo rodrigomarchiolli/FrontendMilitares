@@ -9,12 +9,12 @@ import Aposentadoria from "./scenes/aposentadoria";
 import Alocacao from "./scenes/alocacao";
 import RemovePrs from "./scenes/removeprs";
 import Form from "./scenes/form";
+import Calendar from "./scenes/calendar";
 // import Bar from "./scenes/bar";
 // import Line from "./scenes/line";
 // import Pie from "./scenes/pie";
 // import FAQ from "./scenes/faq";
 // import Geography from "./scenes/geography";
-// import Calendar from "./scenes/calendar";
 
 
 
@@ -37,12 +37,12 @@ function App() {
               <Route path ="/alocacao" element ={<Alocacao/>}/>
               <Route path ="/removeprs" element ={<RemovePrs/>}/>
               <Route path ="/form" element ={<Form/>}/>
+              <Route path ="/calendar" element ={<Calendar/>}/>
               {/* <Route path ="/bar" element ={<Bar/>}/> */}
               {/* <Route path ="/pie" element ={<Pie/>}/> */}
               {/* <Route path ="/line" element ={<Line/>}/> */}
               {/* <Route path ="/faq" element ={<FAQ/>}/> */}
               {/* <Route path ="/geography" element ={<Geography/>}/> */}
-              {/* <Route path ="/calendar" element ={<Calendar/>}/> */}
             </Routes>
           </main>
         </div> 
