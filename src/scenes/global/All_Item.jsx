@@ -14,6 +14,7 @@ import  TimelineOutlinedIcon  from "@mui/icons-material/TimelineOutlined";
 import  MapOutlinedIcon  from "@mui/icons-material/MapOutlined";
 import  PersonOutlinedIcon  from "@mui/icons-material/PersonOutlined";
 import  BarChartOutlinedIcon  from "@mui/icons-material/MapOutlined";
+import  GroupRemoveIcon from '@mui/icons-material/GroupRemove';
 
 
 const Item =({ title, to, icon, selected, setSelected}) =>{
@@ -71,9 +72,9 @@ const All_Item=()=>{
             />
 
             <Item
-                title = "Profile Form"
-                to ="/form"
-                icon={<PersonOutlinedIcon/>}
+                title = "Remover Pessoa"
+                to ="/removeprs"
+                icon={<GroupRemoveIcon/>}
                 selected={selected}
                 setSelected={setSelected}
             />

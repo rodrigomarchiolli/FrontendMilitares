@@ -7,7 +7,7 @@ import Sidebar from "./scenes/global/Sidebar"
 import Dashboard from "./scenes/dashboard";
 import Aposentadoria from "./scenes/aposentadoria";
 import Alocacao from "./scenes/alocacao";
-// import Invoices from "./scenes/invoices";
+import RemovePrs from "./scenes/removeprs";
 // import Bar from "./scenes/bar";
 // import Form from "./scenes/form";
 // import Line from "./scenes/line";
@@ -35,7 +35,7 @@ function App() {
               <Route path ="/" element ={<Dashboard/>}/>
               <Route path ="/aposentadoria" element ={<Aposentadoria/>}/>
               <Route path ="/alocacao" element ={<Alocacao/>}/>
-              {/* <Route path ="/invoices" element ={<Invoices/>}/> */}
+              <Route path ="/removeprs" element ={<RemovePrs/>}/>
               {/* <Route path ="/form" element ={<Form/>}/> */}
               {/* <Route path ="/bar" element ={<Bar/>}/> */}
               {/* <Route path ="/pie" element ={<Pie/>}/> */}
