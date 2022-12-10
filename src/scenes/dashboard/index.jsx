@@ -34,7 +34,7 @@ const Dashboard = () =>{
 
                 <Box>
                     <Button 
-                        sx={{backgroundColor : colors.blueAccent[700], 
+                        sx={{backgroundColor : colors.greenAccent[800], 
                         color: colors.grey[100], 
                         fontSize: "14px", 
                         fontWeight: "bold", 
@@ -71,7 +71,7 @@ const Dashboard = () =>{
                                     progress="0.75"
                                     increase="+14%"
                                     icon={
-                                        <SupervisedUserCircleIcon sx={{ color: colors.greenAccent[600], fontSize:"30px"}}/>
+                                        <SupervisedUserCircleIcon sx={{ color: colors.greenAccent[300], fontSize:"30px"}}/>
                                     }
                                 />
 
@@ -90,7 +90,7 @@ const Dashboard = () =>{
                                     progress="0.5"
                                     increase="+21%"
                                     icon={
-                                        <ElderlyIcon sx={{ color: colors.greenAccent[600], fontSize:"px"}}/>
+                                        <ElderlyIcon sx={{ color: colors.greenAccent[300], fontSize:"px"}}/>
                                     }
                                 />
 
@@ -109,7 +109,7 @@ const Dashboard = () =>{
                                     progress="0.30"
                                     increase="+5%"
                                     icon={
-                                        <LocalPoliceIcon sx={{ color: colors.greenAccent[600], fontSize:"26px"}}/>
+                                        <LocalPoliceIcon sx={{ color: colors.greenAccent[300], fontSize:"26px"}}/>
                                     }
                                 />
 
@@ -122,7 +122,7 @@ const Dashboard = () =>{
 
                                 <Box display="flex">
 
-                                    <WcIcon sx={{ color: colors.greenAccent[600], fontSize:"26px"}}/>
+                                    <WcIcon sx={{ color: colors.greenAccent[300], fontSize:"26px"}}/>
                                     <Typography variant="h5" fontWeight="600" sx={{m: "5px 10px 0 5px"}}>
                                         Gênero
                                     </Typography>
