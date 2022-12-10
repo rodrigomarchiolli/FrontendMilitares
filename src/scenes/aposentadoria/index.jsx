@@ -1,5 +1,5 @@
 import  { Box, Typography, useTheme } from "@mui/material";
-import  { DataGrid } from "@mui/x-data-grid";
+import  { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import  { tokens } from "../../theme";
 import  {mockDataTeam} from "../../data/mockData";
 import Header from "../../components/Header";
@@ -69,17 +69,19 @@ const Aposentadoria = () => {
                 m="40px 0 0 0" 
                 height ="71vh" 
                 sx ={{ 
-                    "& .MuiDataGrid-root": { display: "flex", ml:"400px", justifyContent:"center" ,border: "none"},
+                    "& .MuiDataGrid-root": { border: "none"},
                     "& .MuiDataGrid-cell": {border: "none"},
                     "& .name-column--cell": {color: colors.greenAccent[300]},
                     "& .MuiDataGrid-columnHeaders": {backgroundColor: colors.blueAccent[700], borderBottom: "none"},
                     "& .MuiDataGrid-virtualScroller": {backgroundColor: colors.primary[400]},
                     "& .MuiDataGrid-footerContainer":{borderTop:"none", backgroundColor: colors.blueAccent[700]},
+                    "& .MuiDataGrid-toolbarContainer .MuiButton-text":{color: `${colors.grey[100]} !important`,},
                     
                     }} >
                     <DataGrid
                         rows={mockDataTeam}
                         columns={columns}
+                        components={{Toolbar: GridToolbar}}
                     
                     />
             </Box>

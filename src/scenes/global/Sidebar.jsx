@@ -33,14 +33,14 @@ const Sidebar = () =>{
                 },
             }}>
             
-            <ProSidebar collapsed={isCollapsed}>
+            <ProSidebar height="1%" collapsed={isCollapsed}>
                 <Menu iconShape = "square">
                     {/* LOGO E MENU ICON */}
                     <MenuItem
                         onClick={() => setIsCollapsed(!isCollapsed)}
                         icon= {isCollapsed ? <MenuOutlinedIcon/> : undefined}
                         style={{
-                            margin: "10px 0 20px 0",
+                            margin: "10px 0px 10px 0",
                             color: colors.grey[100],
                         }}
                     >
