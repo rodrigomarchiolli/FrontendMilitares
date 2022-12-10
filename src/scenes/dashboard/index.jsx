@@ -15,11 +15,24 @@ import BarChart from "../../components/BarChart"
 import PieChart from "../../components/PieChart"
 import StatBox from "../../components/StatBox"
 import ProgressCircle from "../../components/ProgressCircle"
-
+import { useState, useEffect } from "react";
+import { API_URL } from "../../configs";
+import axios from "axios";
 
 const Dashboard = () =>{
     const theme = useTheme();
+    const [resumoData, setResumoData] = useState({});
     const colors = tokens(theme.palette.mode);
+
+    // useEffect para quando a pagina iniciar
+    useEffect( () => {
+        // make an get with axios
+        axios.get(API_URL + "/info/resumo").then((response) => {
+            console.log(response.data);
+            setResumoData(response.data);
+        });
+    }, []);
+
 
     return (
         <Box m="20px">
@@ -130,7 +143,7 @@ const Dashboard = () =>{
                                 <Box 
                                     height="200px"
                                     mt="-40px">
-                                        <PieChart/>
+                                        <PieChart resumoData={resumoData.resumo}/>
                                 </Box>
                         </Box>
                     {/*ROW 2 */}
