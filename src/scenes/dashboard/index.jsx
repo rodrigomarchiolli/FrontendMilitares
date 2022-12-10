@@ -7,6 +7,10 @@ import  EmailIcon  from "@mui/icons-material/Email";
 import  PointOfSaleIcon  from "@mui/icons-material/PointOfSale";
 import  PersonAddIcon  from "@mui/icons-material/PersonAdd";
 import  TrafficIcon  from "@mui/icons-material/Traffic";
+import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
+import ElderlyIcon from '@mui/icons-material/Elderly';
+import LocalPoliceIcon from '@mui/icons-material/LocalPolice';
+import WcIcon from '@mui/icons-material/Wc';
 import BarChart from "../../components/BarChart"
 import PieChart from "../../components/PieChart"
 import StatBox from "../../components/StatBox"
@@ -61,12 +65,13 @@ const Dashboard = () =>{
                             justifyContent="center">
 
                                 <StatBox 
-                                    title="12,361"
-                                    subtitle= "Emails Sent"
+                                    isDashboard={false}
+                                    title= "Cadetes APMT"
+                                    subtitle="12,361"
                                     progress="0.75"
                                     increase="+14%"
                                     icon={
-                                        <EmailIcon sx={{ color: colors.greenAccent[600], fontSize:"26px"}}/>
+                                        <SupervisedUserCircleIcon sx={{ color: colors.greenAccent[600], fontSize:"30px"}}/>
                                     }
                                 />
 
@@ -80,12 +85,12 @@ const Dashboard = () =>{
                             justifyContent="center">
 
                                 <StatBox 
-                                    title="431,225"
-                                    subtitle= "Sales Obtained"
+                                    title= "Media de Idade APMT"
+                                    subtitle="431,225"
                                     progress="0.5"
                                     increase="+21%"
                                     icon={
-                                        <PointOfSaleIcon sx={{ color: colors.greenAccent[600], fontSize:"26px"}}/>
+                                        <ElderlyIcon sx={{ color: colors.greenAccent[600], fontSize:"px"}}/>
                                     }
                                 />
 
@@ -100,33 +105,33 @@ const Dashboard = () =>{
 
                                 <StatBox 
                                     title="32,441"
-                                    subtitle= "New Clients"
+                                    subtitle= "Media de Anos de Serviço"
                                     progress="0.30"
                                     increase="+5%"
                                     icon={
-                                        <PersonAddIcon sx={{ color: colors.greenAccent[600], fontSize:"26px"}}/>
+                                        <LocalPoliceIcon sx={{ color: colors.greenAccent[600], fontSize:"26px"}}/>
                                     }
                                 />
 
                         </Box>
 
-                        <Box 
-                            gridColumn="span 3" 
+                        <Box
+                            gridColumn = "span 3"
                             backgroundColor ={colors.primary[400]}
-                            display="flex"
-                            alignItems="center"
-                            justifyContent="center">
+                            p="20px">
 
-                                <StatBox 
-                                    title="1,325,134"
-                                    subtitle= "Traffic Inbound"
-                                    progress="0.80"
-                                    increase="+43%"
-                                    icon={
-                                        <TrafficIcon sx={{ color: colors.greenAccent[600], fontSize:"26px"}}/>
-                                    }
-                                />
+                                <Box display="flex">
 
+                                    <WcIcon sx={{ color: colors.greenAccent[600], fontSize:"26px"}}/>
+                                    <Typography variant="h5" fontWeight="600" sx={{m: "5px 10px 0 5px"}}>
+                                        Gênero
+                                    </Typography>
+                                </Box>
+                                <Box 
+                                    height="200px"
+                                    mt="-40px">
+                                        <PieChart/>
+                                </Box>
                         </Box>
                     {/*ROW 2 */}
 
@@ -143,13 +148,10 @@ const Dashboard = () =>{
                                 alignItems="center">
 
                                     <Box>
-                                        <Typography variant="h5" fontWeight="600" color={colors.grey[100]}>
-                                            Revenue Generated
+                                        <Typography variant="h3" fontWeight="bold" color={colors.grey[100]}>
+                                            Instituição de Origem
                                         </Typography>
 
-                                        <Typography variant="h3" fontWeight="bold" color={colors.greenAccent[500]}>
-                                            $59,342,32
-                                        </Typography>
                                     </Box>
 
                                     <Box>
@@ -234,25 +236,15 @@ const Dashboard = () =>{
                     <Box
                         gridColumn = "span 4"
                         gridRow="span 2"
-                        backgroundColor ={colors.primary[400]}
-                        p="30px">
+                        backgroundColor ={colors.primary[400]}>
 
-                            <Typography variant="h5" fontWeight="600">
-                                Campaing
+                            <Typography variant="h4" fontWeight="bold" sx={{p:"30px 30px 0 30px"}}>
+                                Postos
                             </Typography>
                             <Box
-                                display="flex" 
-                                flexDirection="column" 
-                                alignItems="center"
-                                mt="25px">
-                                    <ProgressCircle size="125"/>
-                                    <Typography variant="h5" color={colors.greenAccent[500]} sx={{mt:"15px"}}>
-                                        $48,352 revenue generated
-                                    </Typography>
-                                    <Typography >
-                                        Includes extra misc expenditures and costs
-                                    </Typography>
-
+                                height="250px"
+                                mt="-20px">
+                                    <BarChart isDashboard={true}/>
                             </Box>
                     </Box>
                     
@@ -261,8 +253,8 @@ const Dashboard = () =>{
                         gridRow="span 2"
                         backgroundColor ={colors.primary[400]}>
 
-                            <Typography variant="h5" fontWeight="600" sx={{p:"30px 30px 0 30px"}}>
-                                Sales Quantity
+                            <Typography variant="h4" fontWeight="bold" sx={{p:"30px 30px 0 30px"}}>
+                                Titulação Acadêmica
                             </Typography>
                             <Box
                                 height="250px"
@@ -275,13 +267,15 @@ const Dashboard = () =>{
                         gridColumn = "span 4"
                         gridRow="span 2"
                         backgroundColor ={colors.primary[400]}
-                        p="30px">
+                        p="20px">
 
-                            <Typography variant="h5" fontWeight="600" sx={{mb:"15px"}}>
-                                Geography Based Traffic
+                            <Typography variant="h4" fontWeight="bold" sx={{mb:"15px"}}>
+                                Fluência em Segundo Idioma
                             </Typography>
-                            <Box height="200px">
-                                <BarChart isDashboard={true}/>
+                            <Box 
+                                height="250px"
+                                mt="-20px">
+                                    <BarChart isDashboard={true}/>
                             </Box>
                     </Box>
 
