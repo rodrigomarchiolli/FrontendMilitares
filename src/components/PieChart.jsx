@@ -4,14 +4,15 @@ import { tokens } from "../theme";
 import { mockPieData as data } from "../data/mockData";
 
 
-const PieChart = () => {
+const PieChart = (resumoData) => {
+
 
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-
+    console.log(resumoData.resumoData.genero);
     return(
         <ResponsivePie
-        data={data}
+        data={resumoData.resumoData.genero.map((item) => {return {id: item.sexo, label:item.sexo ,value: item.qtd}})}
         theme={{
             axis: {
                 domain:{

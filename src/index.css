@@ -10,6 +10,12 @@ html, body, #root, .app, .content {
   display: flex;
   position: relative;
 }
+.content{
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  padding: 0 20px;
+}
 
 ::-webkit-scrollbar {
   width: 10px;
