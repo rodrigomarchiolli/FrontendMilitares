@@ -6,16 +6,14 @@ import { tokens } from "../../theme";
 import  HomeOutlinedIcon  from "@mui/icons-material/HomeOutlined";
 import  PeopleOutlinedIcon  from "@mui/icons-material/PeopleOutlined";
 import  ContactsOutlinedIcon  from "@mui/icons-material/ContactsOutlined";
-// import  ReceiptOutlinedIcon  from "@mui/icons-material/ReceiptOutlined";
 import  CalendarTodayOutlinedIcon  from "@mui/icons-material/CalendarTodayOutlined";
 import  HelpOutlinedIcon  from "@mui/icons-material/HelpOutlined";
 import  PieChartOutlineOutlinedIcon  from "@mui/icons-material/PieChartOutlineOutlined";
 import  TimelineOutlinedIcon  from "@mui/icons-material/TimelineOutlined";
-import  MapOutlinedIcon  from "@mui/icons-material/MapOutlined";
-// import  PersonOutlinedIcon  from "@mui/icons-material/PersonOutlined";
 import  BarChartOutlinedIcon  from "@mui/icons-material/MapOutlined";
 import  GroupRemoveIcon from '@mui/icons-material/GroupRemove';
 import  PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 
 
 const Item =({ title, to, icon, selected, setSelected}) =>{
@@ -81,6 +79,14 @@ const All_Item=()=>{
             />
 
             <Item
+                title = "Editar Pessoa"
+                to ="/editperson"
+                icon={<ManageAccountsIcon/>}
+                selected={selected}
+                setSelected={setSelected}
+            />
+
+            <Item
                 title = "Calendar"
                 to ="/calendar"
                 icon={<CalendarTodayOutlinedIcon/>}
@@ -120,13 +126,7 @@ const All_Item=()=>{
                 setSelected={setSelected}
             />
 
-            <Item
-                title = "Geography Chart"
-                to ="/geography"
-                icon={<MapOutlinedIcon/>}
-                selected={selected}
-                setSelected={setSelected}
-            />
+            
 
         </>
     );
