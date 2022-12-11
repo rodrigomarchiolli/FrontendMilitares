@@ -13,8 +13,8 @@ import Calendar from "./scenes/calendar";
 import FAQ from "./scenes/faq";
 import Bar from "./scenes/bar";
 import Pie from "./scenes/pie";
-// import Line from "./scenes/line";
-// import Geography from "./scenes/geography";
+import EditPerson from "./scenes/editperson";
+import SelectedEditPerson from "./scenes/editperson/selected";
 
 
 
@@ -41,8 +41,8 @@ function App() {
               <Route path ="/faq" element ={<FAQ/>}/>
               <Route path ="/bar" element ={<Bar/>}/>
               <Route path ="/pie" element ={<Pie/>}/>
-              {/* <Route path ="/line" element ={<Line/>}/> */}
-              {/* <Route path ="/geography" element ={<Geography/>}/> */}
+              <Route path ="/editperson" element ={<EditPerson/>}/>
+              <Route path ="/selectedEditPerson" element ={<SelectedEditPerson/>}/>
             </Routes>
           </main>
         </div> 
