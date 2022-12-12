@@ -3,7 +3,7 @@ import { tokens } from "../theme";
 import ProgressCircle from "./ProgressCircle";
 import PieChart from "./PieChart";
 
-const StatBox = ({title, subtitle, icon, progress, increase}) => {
+const StatBox = ({title, subtitle, icon}) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 

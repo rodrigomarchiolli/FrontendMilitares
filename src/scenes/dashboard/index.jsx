@@ -22,16 +22,18 @@ import axios from "axios";
 const Dashboard = () =>{
     const theme = useTheme();
     const [generoData, setGeneroData] = useState(mockPieData);
+    const [idadeData, setIdadeData] = useState();
+    const [servicoData, setServicoData]= useState();
     const colors = tokens(theme.palette.mode);
 
     // useEffect para quando a pagina iniciar
     useEffect( () => {
         // make an get with axios
-        console.log("sexo");
         axios.get(API_URL + "/info/resumo").then((response) => {
-            console.log(response.data);
-            console.log(response.data.resumo.genero);
             setGeneroData(response.data.resumo.genero.map((item) => {return {id: item.sexo, label:item.sexo ,value: item.qtd}}));
+            setIdadeData(response.data.resumo.media_idade);
+            setServicoData(response.data.resumo.media_anos_corporacao)
+            console.log(response.data.resumo.media_idade);
         });
     }, []);
 
@@ -101,7 +103,7 @@ const Dashboard = () =>{
 
                                 <StatBox 
                                     title= "Media de Idade APMT"
-                                    subtitle="431,225"
+                                    subtitle={idadeData}
                                     progress="0.5"
                                     increase="+21%"
                                     icon={
@@ -119,8 +121,8 @@ const Dashboard = () =>{
                             justifyContent="center">
 
                                 <StatBox 
-                                    title="32,441"
-                                    subtitle= "Media de Anos de Serviço"
+                                    title="Media de Anos de Serviço"
+                                    subtitle= {servicoData}
                                     progress="0.30"
                                     increase="+5%"
                                     icon={
