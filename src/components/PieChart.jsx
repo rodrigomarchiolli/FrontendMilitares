@@ -1,18 +1,19 @@
 import { ResponsivePie } from "@nivo/pie";
 import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
-import { mockPieData as data } from "../data/mockData";
+import { useState } from "react";
+import { mockPieData as mockData } from "../data/mockData";
 
 
-const PieChart = (resumoData) => {
+const PieChart = ({generoData}) => {
 
-
+    //const [data, setData ] = useState(mockData)
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-    console.log(resumoData.resumoData.genero);
+    console.log(generoData);
     return(
-        <ResponsivePie
-        data={resumoData.resumoData.genero.map((item) => {return {id: item.sexo, label:item.sexo ,value: item.qtd}})}
+        <ResponsivePie 
+        data={generoData}
         theme={{
             axis: {
                 domain:{
@@ -65,6 +66,8 @@ const PieChart = (resumoData) => {
         arcLinkLabelsSkipAngle={10}
         arcLinkLabelsTextColor={colors.grey[100]}
         arcLinkLabelsThickness={2}
+        arcLinkLabelsDiagonalLength={1}
+        arcLinkLabelsStraightLength={10}
         arcLinkLabelsColor={{ from: 'color', modifiers: [] }}
         arcLabelsSkipAngle={10}
         arcLabelsTextColor={{

@@ -1,7 +1,7 @@
 import { Box , Button, IconButton, Typography, useTheme} from "@mui/material";
 import { tokens } from "../../theme";
 import Header from "../../components/Header";
-import {mockTransactions} from "../../data/mockData";
+import {mockPieData, mockTransactions} from "../../data/mockData";
 import  DownloadOutlinedIcon  from "@mui/icons-material/DownloadOutlined";
 import  EmailIcon  from "@mui/icons-material/Email";
 import  PointOfSaleIcon  from "@mui/icons-material/PointOfSale";
@@ -21,15 +21,17 @@ import axios from "axios";
 
 const Dashboard = () =>{
     const theme = useTheme();
-    const [resumoData, setResumoData] = useState({});
+    const [generoData, setGeneroData] = useState(mockPieData);
     const colors = tokens(theme.palette.mode);
 
     // useEffect para quando a pagina iniciar
     useEffect( () => {
         // make an get with axios
+        console.log("sexo");
         axios.get(API_URL + "/info/resumo").then((response) => {
             console.log(response.data);
-            setResumoData(response.data);
+            console.log(response.data.resumo.genero);
+            setGeneroData(response.data.resumo.genero.map((item) => {return {id: item.sexo, label:item.sexo ,value: item.qtd}}));
         });
     }, []);
 
@@ -143,7 +145,7 @@ const Dashboard = () =>{
                                 <Box 
                                     height="200px"
                                     mt="-40px">
-                                        <PieChart resumoData={resumoData.resumo}/>
+                                        <PieChart generoData={generoData}  />
                                 </Box>
                         </Box>
                     {/*ROW 2 */}
