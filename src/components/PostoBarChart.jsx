@@ -15,18 +15,31 @@ const postoExample = [
     }
 ]
 const PostoBarChart = ({ postoData }) => {
+    const [data, setData] = useState();
+
     useEffect(() => {
-        console.log(postoData);
+        let dt = {}
+        for (let i = 0; i < postoData.length; i++) {
+            let dt2 = {}
+            dt[postoData[i].nm_posto] = postoData[i].qtd
+            dt["nm_posto"] = postoData[i].nm_posto
+        }
+        setData(dt)
+        console.log(dt);
     }, [postoData]);
-    console.log(postoData);
-
-
+    console.log(postoData.map(item => { return { [item.nm_posto]: item.qtd } }));
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+    console.log(Object.keys(colors));
 
     return (
         <ResponsiveBar
-            data={postoData ? postoData : postoExample}
+            data={postoData ? postoData.map(item=>{
+                return{
+                    [item.nm_posto]: item.qtd,
+                    nm_posto: item.nm_posto
+                }
+            }) : []}
             theme={{
                 axis: {
                     domain: {
@@ -39,16 +52,14 @@ const PostoBarChart = ({ postoData }) => {
                             fill: colors.grey[100],
                         },
                     },
-
                     ticks: {
                         line: {
                             stroke: colors.grey[100],
-                            strokeWidth: 1
+                            strokeWidth: 1,
                         },
                         text: {
                             fill: colors.grey[100],
                         },
-
                     },
                 },
                 legends: {
@@ -57,94 +68,52 @@ const PostoBarChart = ({ postoData }) => {
                     },
                 },
             }}
-            // a lista vão ser os valores unicos de nm_posto
-            keys={
-                postoData ? postoData.map((item) => item.nm_posto) : postoExample.map((item) => item.nm_posto)
-            }
-            indexBy="id_posto" //isso serve para agrupar os valores de nm_posto
+            keys={postoData.map(item => { return item.nm_posto })}
+            indexBy="nm_posto"
             margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
             padding={0.3}
-            valueScale={{ type: 'linear' }}
-            indexScale={{ type: 'band', round: true }}
-            colors={{ scheme: 'nivo' }}
-            // os def serve para definir cores especificas para cada nm_posto
+            valueScale={{ type: "linear" }}
+            indexScale={{ type: "band", round: true }}
+            colors={{ scheme: "nivo" }}
             defs={
-                // [
-                // {
-                //     id: 'dots',
-                //     type: 'patternDots',
-                //     background: 'inherit',
-                //     color: '#38bcb2',
-                //     size: 4,
-                //     padding: 1,
-                //     stagger: true
-                // },
-                // {
-                //     id: 'lines',
-                //     type: 'patternLines',
-                //     background: 'inherit',
-                //     color: '#eed312',
-                //     rotation: -45,
-                //     lineWidth: 6,
-                //     spacing: 10
-                // }
-                // ]
-                // vou usar as colors definidas no temas pra fazer uma color pra cada nm_posto
-                postoData ? postoData.map((item) => {
-                    return {
-                        id: item.nm_posto,
-                        type: 'patternDots',
-                        background: 'inherit',
-                        // vai escoler a cor usando o id_posto%qtd de cores em cores pra selecionar a cor
-                        color: colors[item.nm_posto % Object.keys(colors).length],
-                        size: 4,
-                        padding: 1,
-                        stagger: true
-                    }
-                }) : postoExample.map((item) => {
-                    return {
-                        id: item.nm_posto,
-                        type: 'patternLines',
-                        background: 'inherit',
-                        color: colors[item.nm_posto],
-                        rotation: -45,
-                        lineWidth: 6,
-                        spacing: 10
-                    }
-                })
+                postoData
+                    ? postoData.map((item) => {
+                        return {
+                            id: item.nm_posto,
+                            type: 'solid',
+                            color: colors[Object.keys(colors)[item.id_posto % Object.keys(colors).length]][100] ,
+                            background: "inherit",
+                            size: 4,
+                            padding: 1,
+                            stagger: true,
+                        };
+                    })
+                    : []
             }
-            //o fill funciona como um switch case, onde ele vai verificar o nm_posto e vai retornar a cor especifica
             fill={
-                postoData ? postoData.map((item) => {
-                    return {
-                        match: {
+                postoData
+                    ? postoData.map((item) => {
+                        return {
+                            match: {
+                                id: item.nm_posto,
+                            },
                             id: item.nm_posto,
-                        },
-                        id: item.nm_posto,
-                    }
-                }
-                ) : postoExample.map((item) => {
-                    return {
-                        match: {
-                            id: item.nm_posto,
-                        },
-                        id: item.nm_posto,
-                    }
-                }
-                )
-
+                        };
+                    })
+                    : []
             }
-            borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+            borderColor={{ from: "color", modifiers: [["darker", 1.6]] }}
             axisTop={null}
             axisRight={null}
             axisBottom={{
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: 'Posto',
-                legendPosition: 'middle',
-                legendOffset: 32
+                legend: "Nome Posto",
+                legendPosition: "middle",
+                legendOffset: 32,
             }}
+
             axisLeft={{
                 tickSize: 5,
                 tickPadding: 5,
