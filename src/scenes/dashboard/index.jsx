@@ -22,12 +22,13 @@ import Header from "../../components/Header";
 import GeneroPieChart from "../../components/GeneroPieChart.jsx"
 import BarChart from "../../components/BarChart"
 import PostoBarChart from "../../components/PostoBarChart"
-
+import IdiomaBarChart from "../../components/IdiomaBarChart"
 
 const Dashboard = () =>{
     const theme = useTheme();
     const [generoData, setGeneroData] = useState(mockPieData);
     const [postoData, setPostoData] = useState([]);
+    const [idiomaData, setIdiomaData] = useState([]);
     const [idadeData, setIdadeData] = useState();
     const [servicoData, setServicoData]= useState();
     const colors = tokens(theme.palette.mode);
@@ -42,6 +43,7 @@ const Dashboard = () =>{
             console.log(response.data.resumo.media_idade);
             console.log(response.data.resumo.posto);
             setPostoData(response.data.resumo.posto);
+            setIdiomaData(response.data.resumo.idiomas);
         });
     }, []);
 
@@ -300,7 +302,7 @@ const Dashboard = () =>{
                             <Box 
                                 height="250px"
                                 mt="-20px">
-                                    <BarChart isDashboard={true}/>
+                                    <IdiomaBarChart idiomaData={idiomaData}/>
                             </Box>
                     </Box>
 

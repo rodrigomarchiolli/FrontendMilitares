@@ -15,18 +15,7 @@ const postoExample = [
     }
 ]
 const PostoBarChart = ({ postoData }) => {
-    const [data, setData] = useState();
 
-    useEffect(() => {
-        let dt = {}
-        for (let i = 0; i < postoData.length; i++) {
-            let dt2 = {}
-            dt[postoData[i].nm_posto] = postoData[i].qtd
-            dt["nm_posto"] = postoData[i].nm_posto
-        }
-        setData(dt)
-        console.log(dt);
-    }, [postoData]);
     console.log(postoData.map(item => { return { [item.nm_posto]: item.qtd } }));
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
