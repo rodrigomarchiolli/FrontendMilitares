@@ -1,7 +1,7 @@
 import { Box , useTheme, Typography } from "@mui/material";
 import { tokens } from "../theme";
 import ProgressCircle from "./ProgressCircle";
-import PieChart from "./PieChart";
+import GeneroPieChart from "./GeneroPieChart";
 
 const StatBox = ({title, subtitle, icon}) => {
     const theme = useTheme();

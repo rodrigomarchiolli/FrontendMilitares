@@ -1,13 +1,13 @@
 import { Box } from "@mui/material";
 import Header from "../../components/Header";
-import PieChart from "../../components/PieChart";
+import GeneroPieChart from "../../components/GeneroPieChart";
 
 const Pie = () =>{
     return(
         <Box m="20px">
             <Header title="Pie Chart" subtitle="Simple Pie Chart"/>
             <Box height="71vh">
-                <PieChart/>
+                <GeneroPieChart/>
 
             </Box>
 
