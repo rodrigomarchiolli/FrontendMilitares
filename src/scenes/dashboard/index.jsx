@@ -3,10 +3,6 @@ import { tokens } from "../../theme";
 import Header from "../../components/Header";
 import {mockPieData, mockTransactions} from "../../data/mockData";
 import  DownloadOutlinedIcon  from "@mui/icons-material/DownloadOutlined";
-import  EmailIcon  from "@mui/icons-material/Email";
-import  PointOfSaleIcon  from "@mui/icons-material/PointOfSale";
-import  PersonAddIcon  from "@mui/icons-material/PersonAdd";
-import  TrafficIcon  from "@mui/icons-material/Traffic";
 import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
 import ElderlyIcon from '@mui/icons-material/Elderly';
 import LocalPoliceIcon from '@mui/icons-material/LocalPolice';
@@ -14,7 +10,6 @@ import WcIcon from '@mui/icons-material/Wc';
 import BarChart from "../../components/BarChart"
 import PieChart from "../../components/PieChart"
 import StatBox from "../../components/StatBox"
-import ProgressCircle from "../../components/ProgressCircle"
 import { useState, useEffect } from "react";
 import { API_URL } from "../../configs";
 import axios from "axios";
@@ -32,7 +27,7 @@ const Dashboard = () =>{
         axios.get(API_URL + "/info/resumo").then((response) => {
             setGeneroData(response.data.resumo.genero.map((item) => {return {id: item.sexo, label:item.sexo ,value: item.qtd}}));
             setIdadeData(response.data.resumo.media_idade);
-            setServicoData(response.data.resumo.media_anos_corporacao)
+            setServicoData(response.data.resumo.media_anos_corporacao);
             console.log(response.data.resumo.media_idade);
         });
     }, []);
