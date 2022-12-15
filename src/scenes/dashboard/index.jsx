@@ -1,22 +1,29 @@
 import { Box , Button, IconButton, Typography, useTheme} from "@mui/material";
 import { tokens } from "../../theme";
-import Header from "../../components/Header";
 import {mockPieData, mockTransactions} from "../../data/mockData";
 import  DownloadOutlinedIcon  from "@mui/icons-material/DownloadOutlined";
 import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
 import ElderlyIcon from '@mui/icons-material/Elderly';
 import LocalPoliceIcon from '@mui/icons-material/LocalPolice';
 import WcIcon from '@mui/icons-material/Wc';
-import BarChart from "../../components/BarChart"
-import PieChart from "../../components/PieChart"
 import StatBox from "../../components/StatBox"
 import { useState, useEffect } from "react";
 import { API_URL } from "../../configs";
 import axios from "axios";
 
+
+//include dos meus componentes
+import Header from "../../components/Header";
+import GeneroPieChart from "../../components/GeneroPieChart.jsx"
+import BarChart from "../../components/BarChart"
+import PostoBarChart from "../../components/PostoBarChart"
+import IdiomaBarChart from "../../components/IdiomaBarChart"
+
 const Dashboard = () =>{
     const theme = useTheme();
     const [generoData, setGeneroData] = useState(mockPieData);
+    const [postoData, setPostoData] = useState([]);
+    const [idiomaData, setIdiomaData] = useState([]);
     const [idadeData, setIdadeData] = useState();
     const [servicoData, setServicoData]= useState();
     const colors = tokens(theme.palette.mode);
@@ -29,6 +36,9 @@ const Dashboard = () =>{
             setIdadeData(response.data.resumo.media_idade);
             setServicoData(response.data.resumo.media_anos_corporacao);
             console.log(response.data.resumo.media_idade);
+            console.log(response.data.resumo.posto);
+            setPostoData(response.data.resumo.posto);
+            setIdiomaData(response.data.resumo.idiomas);
         });
     }, []);
 
@@ -142,7 +152,7 @@ const Dashboard = () =>{
                                 <Box 
                                     height="200px"
                                     mt="-40px">
-                                        <PieChart generoData={generoData}  />
+                                        <GeneroPieChart generoData={generoData}  />
                                 </Box>
                         </Box>
                     {/*ROW 2 */}
@@ -256,7 +266,7 @@ const Dashboard = () =>{
                             <Box
                                 height="250px"
                                 mt="-20px">
-                                    <BarChart isDashboard={true}/>
+                                    <PostoBarChart postoData={postoData}/>
                             </Box>
                     </Box>
                     
@@ -271,7 +281,7 @@ const Dashboard = () =>{
                             <Box
                                 height="250px"
                                 mt="-20px">
-                                    <BarChart isDashboard={true}/>
+                                    <BarChart postoData={postoData}/>
                             </Box>
                     </Box>
 
@@ -287,7 +297,7 @@ const Dashboard = () =>{
                             <Box 
                                 height="250px"
                                 mt="-20px">
-                                    <BarChart isDashboard={true}/>
+                                    <IdiomaBarChart idiomaData={idiomaData}/>
                             </Box>
                     </Box>
 

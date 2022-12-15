@@ -5,7 +5,7 @@ import { useState } from "react";
 import { mockPieData as mockData } from "../data/mockData";
 
 
-const PieChart = ({generoData}) => {
+const GeneroPieChart = ({generoData}) => {
 
     //const [data, setData ] = useState(mockData)
     const theme = useTheme();
@@ -84,4 +84,4 @@ const PieChart = ({generoData}) => {
     )
 }
 
-export default PieChart;
+export default GeneroPieChart;
