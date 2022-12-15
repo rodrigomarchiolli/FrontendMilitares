@@ -27,7 +27,7 @@ import PostoBarChart from "../../components/PostoBarChart"
 const Dashboard = () =>{
     const theme = useTheme();
     const [generoData, setGeneroData] = useState(mockPieData);
-    const [postoData, setPostoData] = useState({});
+    const [postoData, setPostoData] = useState([]);
     const [idadeData, setIdadeData] = useState();
     const [servicoData, setServicoData]= useState();
     const colors = tokens(theme.palette.mode);

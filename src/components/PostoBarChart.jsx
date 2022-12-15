@@ -15,18 +15,18 @@ const postoExample = [
     }
 ]
 const PostoBarChart = ({ postoData }) => {
-    const [data, setData] = useState(postoExample)
-
     useEffect(() => {
-        setData(postoData)
-    }, [postoData])
+        console.log(postoData);
+    }, [postoData]);
+    console.log(postoData);
+
 
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
     return (
         <ResponsiveBar
-            data={postoData ? postoData :[]}
+            data={postoData ? postoData : postoExample}
             theme={{
                 axis: {
                     domain: {
@@ -59,9 +59,9 @@ const PostoBarChart = ({ postoData }) => {
             }}
             // a lista vão ser os valores unicos de nm_posto
             keys={
-                postoData ? postoData.map((item) => item.nm_posto) : []
+                postoData ? postoData.map((item) => item.nm_posto) : postoExample.map((item) => item.nm_posto)
             }
-            indexBy="nm_posto" //isso serve para agrupar os valores de nm_posto
+            indexBy="id_posto" //isso serve para agrupar os valores de nm_posto
             margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
             padding={0.3}
             valueScale={{ type: 'linear' }}
@@ -101,7 +101,17 @@ const PostoBarChart = ({ postoData }) => {
                         padding: 1,
                         stagger: true
                     }
-                }) : []
+                }) : postoExample.map((item) => {
+                    return {
+                        id: item.nm_posto,
+                        type: 'patternLines',
+                        background: 'inherit',
+                        color: colors[item.nm_posto],
+                        rotation: -45,
+                        lineWidth: 6,
+                        spacing: 10
+                    }
+                })
             }
             //o fill funciona como um switch case, onde ele vai verificar o nm_posto e vai retornar a cor especifica
             fill={
@@ -113,7 +123,15 @@ const PostoBarChart = ({ postoData }) => {
                         id: item.nm_posto,
                     }
                 }
-                ) : []
+                ) : postoExample.map((item) => {
+                    return {
+                        match: {
+                            id: item.nm_posto,
+                        },
+                        id: item.nm_posto,
+                    }
+                }
+                )
 
             }
             borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
@@ -123,7 +141,7 @@ const PostoBarChart = ({ postoData }) => {
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: 'posto',
+                legend: 'Posto',
                 legendPosition: 'middle',
                 legendOffset: 32
             }}
@@ -131,7 +149,7 @@ const PostoBarChart = ({ postoData }) => {
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: 'quantidade',
+                legend: 'Quantidade',
                 legendPosition: 'middle',
                 legendOffset: -40
             }}
@@ -169,4 +187,5 @@ const PostoBarChart = ({ postoData }) => {
 
         />)
 }
+
 export default PostoBarChart;
