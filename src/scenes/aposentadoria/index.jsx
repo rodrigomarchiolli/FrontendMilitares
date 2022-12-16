@@ -3,7 +3,7 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataTeam } from "../../data/mockData";
 import Header from "../../components/Header";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Axios from "axios";
 import { API_URL } from "../../configs";
 
@@ -107,9 +107,12 @@ const Aposentadoria = () => {
                 setRowsData(response.data.militares);
             })
             .catch((error) => {
-                console.error(error);
+                alert(error.response.data.msg)
             });
     };
+    useEffect(() => {
+        applyFilters();
+    }, []);
 
     return (
         <Box m="20px"
@@ -146,6 +149,7 @@ const Aposentadoria = () => {
                     </Typography>
 
                     <form>
+                    
                         <TextField
                             label="Quantidade"
                             variant="outlined"
@@ -219,6 +223,14 @@ const Aposentadoria = () => {
                             margin="normal"
                         />
 
+                        <Box
+                            display="flex"
+                            flexDirection="row"
+                            justifyContent="center"
+                            alignItems="center"
+                            mt="20px"
+                        >
+
                         <Button
                             variant="contained"
                             color="secondary"
@@ -226,6 +238,21 @@ const Aposentadoria = () => {
                         >
                             Filtrar
                         </Button>
+                        {/* botão para limpar este filtro */}
+                        <Button
+                                variant="contained"
+                                color="warning"
+                                onClick={() => {
+                                    setFiltroQtd(10);
+                                    setFiltroPagina(1);
+                                    setFiltroAposentadoriaSuperior('');
+                                    setFiltroAposentadoriaInferior('');
+                                    setFiltroNome('');
+                                }}
+                            >
+                                Limpar
+                            </Button>
+                        </Box>
                     </form>
 
                 </Box>
