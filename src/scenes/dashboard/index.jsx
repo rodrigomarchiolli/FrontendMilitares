@@ -189,7 +189,7 @@ const Dashboard = () => {
                 fontWeight="bold"
                 color={colors.grey[100]}
               >
-                Instituição de Origem
+                Cursos
               </Typography>
             </Box>
 
