@@ -14,19 +14,9 @@ import MinimizeIcon from '@mui/icons-material/Minimize';
 import FilterNoneIcon from '@mui/icons-material/FilterNone';
 //import { borderRadius } from "@mui/system";
 
-const ipcRenderer = window.require('electron').ipcRenderer;
 
-function closeApp() {
-    ipcRenderer.send('close-app');
-}
 
-function minimizeApp() {
-    ipcRenderer.send('minimize-app');
-}
 
-function expandApp() {
-    ipcRenderer.send('expand-app');
-}
 
 
 const Topbar = () => {
@@ -61,21 +51,7 @@ const Topbar = () => {
 
                 </IconButton>
 
-                <IconButton>
-                    <MinimizeIcon onClick={() => minimizeApp()} />
-
-                </IconButton>
-
-
-                <IconButton>
-                    <FilterNoneIcon fontSize="small" onClick={() => expandApp()} />
-
-                </IconButton>
-
-                <IconButton>
-                    <CloseIcon onClick={() => closeApp()} />
-
-                </IconButton>
+                
             </Box>
         </Box>
 
