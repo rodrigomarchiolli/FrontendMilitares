@@ -73,7 +73,7 @@ const All_Item=()=>{
               color={colors_theme.orangeAccent[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-              Configurações
+              Ajustes
             </Typography>
 
             <Item
@@ -106,7 +106,7 @@ const All_Item=()=>{
               color={colors_theme.orangeAccent[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-              Informações
+              Infos
             </Typography>
 
             <Item

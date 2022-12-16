@@ -18,7 +18,7 @@ const FAQ = () =>{
                 <AccordionSummary expandIcon={<ExpandedMoreIcon/>}>
 
                     <Typography color ={colors.greenAccent[500]} variant="h5">
-                        Pergunta Importante
+                        Filtragem na Aposentadoria
                     </Typography>
 
                 </AccordionSummary>
@@ -26,7 +26,8 @@ const FAQ = () =>{
                 <AccordionDetails>
 
                     <Typography>
-                        Para que serve um FAQ?  
+                        Para você filtrar os militares na aba de aposentadoria, 2 paramêtros são obrigatórios: Quantidade e Paginas.
+                        Sendo o limite minimo de Quantidades igual a 10. 
                      </Typography>
 
                 </AccordionDetails>
@@ -36,7 +37,7 @@ const FAQ = () =>{
                 <AccordionSummary expandIcon={<ExpandedMoreIcon/>}>
 
                     <Typography color ={colors.greenAccent[500]} variant="h5">
-                        Outra Pergunta Importante
+                        Como posso baixar um relatório de projeto?
                     </Typography>
                     
                 </AccordionSummary>
@@ -44,7 +45,7 @@ const FAQ = () =>{
                 <AccordionDetails>
 
                     <Typography>
-                        Eu deveria fazer um FAQ?  
+                        Infelizmente não adicionamos essa funcionalidade ao projeto. Porém assim que possivel estaremos atualizando para que possamos fornecer a você essa informação 
                      </Typography>
 
                 </AccordionDetails>
@@ -54,7 +55,7 @@ const FAQ = () =>{
                 <AccordionSummary expandIcon={<ExpandedMoreIcon/>}>
 
                     <Typography color ={colors.greenAccent[500]} variant="h5">
-                        Pergunta Aleatoria
+                        Como posso adicionar novos membros?
                     </Typography>
                     
                 </AccordionSummary>
@@ -62,7 +63,8 @@ const FAQ = () =>{
                 <AccordionDetails>
 
                     <Typography>
-                        É possivel respirar enquanto engole a saliva?  
+                        Ainda não foi implementado a rota direta para que você possa fazer isso. 
+                        Mas a ideia seria: Ao ir na aba de  Adicionar Pessoa você precisa passar apenas os dados obrigatórios para seu cadastro e logo em seguida apertar no botão CREATE USER 
                      </Typography>
 
                 </AccordionDetails>
@@ -72,7 +74,7 @@ const FAQ = () =>{
                 <AccordionSummary expandIcon={<ExpandedMoreIcon/>}>
 
                     <Typography color ={colors.greenAccent[500]} variant="h5">
-                        Why are you still here?
+                        Como posso Editar um membro?
                     </Typography>
                     
                 </AccordionSummary>
@@ -80,7 +82,8 @@ const FAQ = () =>{
                 <AccordionDetails>
 
                     <Typography>
-                        Just to Suffer?  
+                        Ainda não foi implementado a rota direta para que você possa fazer isso. 
+                        Mas a ideia seria: Ao ir na aba de Editar Pessoa, através da listagem de militares, você poderia clicar no icone de editar representado por um lápis, o qual irá direcionar você para uma aba onde estaram as informações do usuário, possibilitando você editar elas, desde que mantenha os dados obrigatórios
                      </Typography>
 
                 </AccordionDetails>

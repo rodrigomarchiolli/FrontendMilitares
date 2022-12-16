@@ -1,4 +1,4 @@
-import  { Box, useTheme } from "@mui/material";
+import  { Box, useTheme, Button,TextField } from "@mui/material";
 import  { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import  { tokens } from "../../theme";
 import  {mockDataContacts} from "../../data/mockData";
@@ -63,6 +63,17 @@ const RemovePrs = () => {
     return(
         <Box m= "20px">
             <Header title="Remover Pessoa" subtitle ="Lista de Dados Cadastrais"/>
+
+
+            <Box>
+                <Box display="flex" justifyContent="end" mt="20px">
+                    <Button type="submit" color="secondary" variant="contained">
+                        Remover Usuários
+                    </Button>
+
+                </Box>
+            </Box>
+
             <Box 
                 m="40px 0 0 0" 
                 height ="71vh" 

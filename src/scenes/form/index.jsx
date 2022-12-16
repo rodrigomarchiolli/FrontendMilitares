@@ -137,7 +137,7 @@ const Form = () =>{
                                         fullWidth
                                         variant="filled"
                                         type="text"
-                                        label="dd/mm/aa"
+                                        label="Digite a Data de Ingresso"
                                         onBlur={handleBlur}
                                         onChange={handleChange}
                                         value={values.Data}
@@ -151,7 +151,7 @@ const Form = () =>{
                                         fullWidth
                                         variant="filled"
                                         type="text"
-                                        label="dd/mm/aa"
+                                        label="Digite a Antiguidade"
                                         onBlur={handleBlur}
                                         onChange={handleChange}
                                         value={values.LastTime}
@@ -193,7 +193,7 @@ const Form = () =>{
                                         fullWidth
                                         variant="filled"
                                         type="text"
-                                        label="dd/mm/aa"
+                                        label="Digite a Data de Nascimento"
                                         onBlur={handleBlur}
                                         onChange={handleChange}
                                         value={values.Birth}
