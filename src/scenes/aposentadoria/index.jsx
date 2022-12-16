@@ -5,87 +5,106 @@ import { mockDataTeam } from "../../data/mockData";
 import Header from "../../components/Header";
 import { useState } from "react";
 import Axios from "axios";
+import { API_URL } from "../../configs";
 
-
+const test_militares = [
+    {
+        "matricula": 900000,
+        "nome": "Joaquim Alves da Silva Xavier",
+        "sexo": "Masculino",
+        "antiguidade": 99999,
+        "dt_ingresso": 633837600,
+        "dt_nascimento": 318222000,
+        "licencas_esp_acc": 6,
+        "endereco": "Avenida Engenheiro Mesquita, 586, Centro, Araranguá/SC",
+        "ferias": 1643684400,
+        "dt_aposentadoria": 1028602800,
+        "nm_cidade": "Araranguá",
+        "nm_posto": "Soldado",
+        "nm_batalhao": null
+    },
+    {
+        "matricula": 900001,
+        "nome": "Joaquim Alves da Silva Xavier",
+        "sexo": "Masculino",
+        "antiguidade": 99999,
+        "dt_ingresso": 633837600,
+        "dt_nascimento": 318222000,
+        "licencas_esp_acc": 6,
+        "endereco": "Avenida Engenheiro Mesquita, 586, Centro, Araranguá/SC",
+        "ferias": 1643684400,
+        "dt_aposentadoria": 1028602800,
+        "nm_cidade": "Araranguá",
+        "nm_posto": "Soldado",
+        "nm_batalhao": null
+    },
+]
 
 
 const Aposentadoria = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
-    const [filtroQtd, setFiltroQtd] = useState(null);
-    const [filtroPagina, setFiltroPagina] = useState(null);
-    const [filtroAposentadoriaSuperior, setFiltroAposentadoriaSuperior] = useState(null);
-    const [filtroAposentadoriaInferior, setFiltroAposentadoriaInferior] = useState(null);
-    const [filtroNome, setFiltroNome] = useState(null);
+    const [rowsData, setRowsData] = useState([]);
+
+    const [filtroQtd, setFiltroQtd] = useState(10);
+    const [filtroPagina, setFiltroPagina] = useState(1);
+    const [filtroAposentadoriaSuperior, setFiltroAposentadoriaSuperior] = useState('');
+    const [filtroAposentadoriaInferior, setFiltroAposentadoriaInferior] = useState('');
+    const [filtroNome, setFiltroNome] = useState('');
     const [rows, setRows] = useState([]);
 
     const columns = [
-        { field: "id", headerName: "ID" },
+        { field: "id", headerName: "Matricula" },
         {
-            field: "name",
-            headerName: "Name",
-            flex: 1,
-            cellClassName: "name-column-cell"
-        },
-        {
-            field: "age",
-            headerName: "Age",
-            type: "number",
-            headerAlign: "left",
-            align: "left",
-        },
-
-        {
-            field: "phone",
-            headerName: "Phone Number",
-            flex: 1,
-        },
-
-        {
-            field: "email",
-            headerName: "Email",
-            flex: 1,
-        },
-        {
-            field: "access",
-            headerName: "Access Level",
-            flex: 1,
-            renderCell: ({ row: { access } }) => {
+            field: "nome",
+            headerName: "Nome do Militar",
+            // adiciona quebra de linha
+            renderCell: (params) => {
                 return (
-                    <Box
-                        width="60%"
-                        m="0 auto"
-                        p="5px"
-                        display="flex"
-                        justifyContent="center"
-                        backgroundColor={colors.greenAccent[600]}
-                        borderRadius="4px">
-
-                        <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
-
-                            {access}
-
-                        </Typography>
-
-                    </Box>
+                    <Typography
+                        variant="body2"
+                        style={{ whiteSpace: "pre-line" }}
+                    >
+                        {params.value}
+                    </Typography>
                 );
+            }
 
-            },
         },
+        { field: "sexo", headerName: "Sexo" },
+        { field: "nm_posto", headerName: "Posto" },
+        { field: "dt_ingresso", headerName: "Ingresso" },
+        { field: "dt_nascimento", headerName: "Nascimento" },
+        { field: "licencas_esp_acc", headerName: "Licenças Especiais" },
+        { field: "endereco", headerName: "Endereço" },
+        { field: "ferias", headerName: "Férias" },
+        { field: "dt_aposentadoria", headerName: "Aposentadoria" },
+        { field: "nm_cidade", headerName: "Cidade" },
+        { field: "nm_batalhao", headerName: "Batalhão" },
     ];
 
     const applyFilters = () => {
         const params = {};
-        if (filtroQtd) params.qtd = filtroQtd;
-        if (filtroPagina) params.pagina = filtroPagina;
-        if (filtroAposentadoriaSuperior) params.aposentadoriaSuperior = filtroAposentadoriaSuperior;
-        if (filtroAposentadoriaInferior) params.aposentadoriaInferior = filtroAposentadoriaInferior;
-        if (filtroNome) params.nome = filtroNome;
-
-        Axios.get("/api/aposentadoria", { params })
+        if (filtroQtd && filtroQtd != '') params["qtd"] = filtroQtd;
+        if (filtroPagina && filtroPagina != '') params["pagina"] = filtroPagina;
+        if (filtroAposentadoriaSuperior && filtroAposentadoriaSuperior != '') {
+            params["dt_aposentadoria_sup"] = filtroAposentadoriaSuperior;
+            // converte para timestamp em segundos
+            params["dt_aposentadoria_sup"] = new Date(params["dt_aposentadoria_sup"]).getTime() / 1000;
+        }
+        if (filtroAposentadoriaInferior && filtroAposentadoriaInferior != '') {
+            params["dt_aposentadoria_inf"] = filtroAposentadoriaInferior;
+            // converte para timestamp em segundos
+            params["dt_aposentadoria_inf"] = new Date(params["dt_aposentadoria_inf"]).getTime() / 1000;
+        }
+        if (filtroNome && filtroNome != '') params["nome"] = filtroNome;
+        console.log(params);
+        Axios.get(API_URL + "/militares/aposentadoria", { params })
             .then((response) => {
-                setRows(response.data);
+                //setRows(response.data);
+                console.log(response.data);
+                setRowsData(response.data.militares);
             })
             .catch((error) => {
                 console.error(error);
@@ -133,7 +152,14 @@ const Aposentadoria = () => {
                             color="secondary"
                             type="number"
                             value={filtroQtd}
-                            onChange={(e) => setFiltroQtd(e.target.value)}
+                            // o valor não pode ser menor que 1
+                            onChange={(e) => {
+                                if (e.target.value < 1) {
+                                    e.target.value = 1;
+                                    return;
+                                };
+                                setFiltroQtd(e.target.value);
+                            }}
                             InputLabelProps={{ shrink: true }}
                             fullWidth
                             margin="normal"
@@ -145,7 +171,14 @@ const Aposentadoria = () => {
                             color="secondary"
                             type="number"
                             value={filtroPagina}
-                            onChange={(e) => setFiltroPagina(e.target.value)}
+                            // o valor não pode ser menor que 1
+                            onChange={(e) => {
+                                if (e.target.value < 1) {
+                                    e.target.value = 1;
+                                    return;
+                                };
+                                setFiltroPagina(e.target.value);
+                            }}
                             InputLabelProps={{ shrink: true }}
                             fullWidth
                             margin="normal"
@@ -189,7 +222,7 @@ const Aposentadoria = () => {
                         <Button
                             variant="contained"
                             color="secondary"
-                            onClick={applyFilters}
+                            onClick={() => applyFilters()}
                         >
                             Filtrar
                         </Button>
@@ -208,16 +241,49 @@ const Aposentadoria = () => {
                         "& .name-column--cell": { color: colors.greenAccent[300] },
                         "& .MuiDataGrid-columnHeaders": { backgroundColor: colors.greenAccent[800], borderBottom: "none" },
                         "& .MuiDataGrid-virtualScroller": { backgroundColor: colors.primary[400] },
-                        "& .MuiDataGrid-footerContainer": { borderTop: "none", backgroundColor: colors.greenAccent[800] },
+                        // remove o footer
+                        "& .MuiDataGrid-footerContainer": { display: "none" },
                         "& .MuiDataGrid-toolbarContainer .MuiButton-text": { color: `${colors.grey[100]} !important`, },
+                        "& .MuiDataGrid-toolbarContainer .MuiButton-text:hover": { backgroundColor: `${colors.greenAccent[800]} !important`, },
+                        "& .MuiDataGrid-toolbarContainer .MuiButton-text:active": { backgroundColor: `${colors.greenAccent[800]} !important`, },
+                        "& .MuiDataGrid-toolbarContainer .MuiButton-text:focus": { backgroundColor: `${colors.greenAccent[800]} !important`, },
+                        "& .MuiDataGrid-toolbarContainer .MuiButton-text:disabled": { backgroundColor: `${colors.greenAccent[800]} !important`, },
+                        "& .MuiDataGrid-toolbarContainer .MuiButton-text:disabled:hover": { backgroundColor: `${colors.greenAccent[800]} !important`, },
+                        "& .MuiDataGrid-toolbarContainer .MuiButton-text:disabled:active": { backgroundColor: `${colors.greenAccent[800]} !important`, },
+                        "& .MuiDataGrid-toolbarContainer .MuiButton-text:disabled:focus": { backgroundColor: `${colors.greenAccent[800]} !important`, },
+                        "& .MuiDataGrid-toolbarContainer .MuiButton-text.Mui-disabled": { backgroundColor: `${colors.greenAccent[800]} !important`, },
+                        "& .MuiDataGrid-toolbarContainer .MuiButton-text.Mui-disabled:hover": { backgroundColor: `${colors.greenAccent[800]} !important`, },
+                        "& .MuiDataGrid-toolbarContainer .MuiButton-text.Mui-disabled:active": { backgroundColor: `${colors.greenAccent[800]} !important`, },
+                        "& .MuiDataGrid-toolbarContainer .MuiButton-text.Mui-disabled:focus": { backgroundColor: `${colors.greenAccent[800]} !important`, },
+
                     }}
                 >
                     <DataGrid
-                        rows={mockDataTeam}
+                        rows={rowsData?rowsData.map((militar) => {
+                            return {
+                                id: militar.matricula,
+                                nome: militar.nome,
+                                sexo: militar.sexo,
+                                nm_posto: militar.nm_posto,
+                                graduacao: militar.graduacao,
+                                // data de nascimento é passada como timestamp em segundo, enão vou converter para legivel no fuso brasileiro (apenas dd/mm/yyyy)
+                                dt_nascimento: new Date(militar.dt_nascimento * 1000).toLocaleDateString("pt-BR"),
+                                // data de aposentadoria é passada como timestamp em segundo, enão vou converter para legivel no fuso brasileiro (apenas dd/mm/yyyy)
+                                dt_aposentadoria: new Date(militar.dt_aposentadoria * 1000).toLocaleDateString("pt-BR"),
+                                // data de ingresso é passada como timestamp em segundo, enão vou converter para legivel no fuso brasileiro (apenas dd/mm/yyyy)
+                                dt_ingresso: new Date(militar.dt_ingresso * 1000).toLocaleDateString("pt-BR"),
+                                licencas_esp_acc: militar.licencas_esp_acc,
+                                endereco: militar.endereco,
+                                // ferias acumuladas é passada como timestamp em segundo, enão vou converter para legivel no fuso brasileiro (apenas dd/mm/yyyy)
+                                ferias: new Date(militar.ferias * 1000).toLocaleDateString("pt-BR"),
+                                nm_cidade: militar.nm_cidade,
+                                nm_batalhao: militar.nm_batalhao ? militar.nm_batalhao : "---",
+
+
+                            }
+                        }):[]}
                         columns={columns}
-                        filterModel={{
-                            items: [{ columnField: 'rating', operatorValue: '>', value: '2.5' }],
-                        }}
+                        
                     />
                 </Box>
             </Box>
