@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import 'react-pro-sidebar/dist/css/styles.css';
-import { Box, IconButton, useTheme } from '@mui/material';
+import { Box, IconButton, useTheme, colors } from '@mui/material';
 import { Link } from "react-router-dom";
 import { tokens } from "../../theme";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
@@ -11,13 +11,13 @@ import All_Item from "./All_Item";
 
 const Sidebar = () => {
     const theme = useTheme();
-    const colors = tokens(theme.palette.mode);
+    const colors_theme = tokens(theme.palette.mode);
     const [isCollapsed, setIsCollapsed] = useState(false);
 
     return (
         <Box sx={{
             "& .pro-sidebar-inner": {
-                background: `${colors.primary[400]} !important`,
+                background: `${colors_theme.primary[400]} !important`,
             },
             "& .pro-icon-wrapper": {
                 backgroundColor: "transparent !important",
@@ -26,10 +26,10 @@ const Sidebar = () => {
                 padding: "5px 35px 5px 20px !important",
             },
             "& .pro-inner-item:hover": {
-                color: "#868dfb !important",
+                color: `${colors_theme.orangeAccent[800]} !important`,
             },
             "& .pro-menu-item.active": {
-                color: "#6870fa !important",
+                color: `${colors_theme.orangeAccent[500]} !important`,
             },
             height: "100%"
 
@@ -43,7 +43,7 @@ const Sidebar = () => {
                         icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
                         style={{
                             margin: "10px 0px 10px 0",
-                            color: colors.grey[100],
+                            color: colors_theme.grey[100],
                         }}
                     >
                         {!isCollapsed && (
