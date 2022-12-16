@@ -6,7 +6,6 @@ import { tokens } from "../../theme";
 import  HomeOutlinedIcon  from "@mui/icons-material/HomeOutlined";
 import  PeopleOutlinedIcon  from "@mui/icons-material/PeopleOutlined";
 import  ContactsOutlinedIcon  from "@mui/icons-material/ContactsOutlined";
-import  CalendarTodayOutlinedIcon  from "@mui/icons-material/CalendarTodayOutlined";
 import  HelpOutlinedIcon  from "@mui/icons-material/HelpOutlined";
 import  GroupRemoveIcon from '@mui/icons-material/GroupRemove';
 import  PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
@@ -99,13 +98,6 @@ const All_Item=()=>{
                 setSelected={setSelected}
             />
 
-            <Item
-                title = "Calendar"
-                to ="/calendar"
-                icon={<CalendarTodayOutlinedIcon/>}
-                selected={selected}
-                setSelected={setSelected}
-            />
 
             <Typography
               variant="h6"

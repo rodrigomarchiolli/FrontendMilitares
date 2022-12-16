@@ -17,15 +17,15 @@ const Aposentadoria = () => {
       
         if(!response.data.msg){
             setAposData(response.data.militares);
-        console.log(response.data.militares);
-        console.log(aposData);
+        // console.log(response.data.militares);
+        // console.log(aposData);
         }else{
             alert(response.data.msg)
         }
       
     })
     .catch(e=>{
-        console.log(e);
+        // console.log(e);
         alert(e.response.data.msg)
     });
   }, []);

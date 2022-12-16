@@ -1,13 +1,12 @@
 import { ResponsiveBar } from "@nivo/bar";
 import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
-import { useState, useEffect } from "react";
 
 
 const IdiomaBarChart = ({ idiomaData }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-    console.log(idiomaData);
+    // console.log(idiomaData);
     return (
         <ResponsiveBar
             // aqui vc tem que passar um vetor de objetos, cada objeto nesse vetor representa uma barra.
