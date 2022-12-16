@@ -14,11 +14,11 @@ import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 
 const Item =({ title, to, icon, selected, setSelected}) =>{
     const theme = useTheme();
-    const colors = tokens(theme.palette.mode);
+    const colors_theme = tokens(theme.palette.mode);
     return(
         <MenuItem 
             active ={selected === title} 
-            style={{ color: colors.grey[100]}} 
+            style={{ color: colors_theme.grey[100]}} 
             onClick={() => setSelected(title)} 
             icon={icon}>
 
@@ -31,6 +31,8 @@ const Item =({ title, to, icon, selected, setSelected}) =>{
 
 
 const All_Item=()=>{
+    const theme = useTheme();
+    const colors_theme = tokens(theme.palette.mode);
     const [selected, setSelected] = useState("Dashboard");
     return(
         <>
@@ -44,7 +46,7 @@ const All_Item=()=>{
 
             <Typography
               variant="h6"
-              color={colors.blue[300]}
+              color={colors_theme.orangeAccent[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
               Dados
@@ -68,7 +70,7 @@ const All_Item=()=>{
 
             <Typography
               variant="h6"
-              color={colors.blue[300]}
+              color={colors_theme.orangeAccent[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
               Configurações
@@ -101,7 +103,7 @@ const All_Item=()=>{
 
             <Typography
               variant="h6"
-              color={colors.blue[300]}
+              color={colors_theme.orangeAccent[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
               Informações
