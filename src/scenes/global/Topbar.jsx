@@ -2,6 +2,7 @@ import { Box, IconButton, useTheme} from "@mui/material";
 import { useContext } from "react";
 import { ColorModeContext, tokens } from "../../theme";
 import InputBase from "@mui/material/InputBase";
+import { ipcRenderer } from 'electron';
 
 import  LightModeOutlinedIcon  from "@mui/icons-material/LightModeOutlined";
 import  DarkModeOutlinedIcon  from "@mui/icons-material/DarkModeOutlined";
@@ -9,8 +10,22 @@ import  NotificationsOutlinedIcon  from "@mui/icons-material/NotificationsOutlin
 import  SettingsOutlinedIcon  from "@mui/icons-material/SettingsOutlined";
 import  PersonOutlinedIcon  from "@mui/icons-material/PersonOutlined";
 import  SearchIcon  from "@mui/icons-material/Search";
+import CloseIcon from '@mui/icons-material/Close';
+import MinimizeIcon from '@mui/icons-material/Minimize';
+import FilterNoneIcon from '@mui/icons-material/FilterNone';
 //import { borderRadius } from "@mui/system";
 
+function closeApp() {
+    ipcRenderer.send('close-app');
+  }
+
+function minimizeApp() {
+ipcRenderer.send('minimize-app');
+}
+
+function expandApp() {
+    ipcRenderer.send('expand-app');
+  }
 
 
 const Topbar = () =>{
@@ -46,18 +61,18 @@ const Topbar = () =>{
                 </IconButton>
                     
                 <IconButton>
-                    <NotificationsOutlinedIcon/>
+                    <MinimizeIcon onClick={() => minimizeApp()}/>
                     
                 </IconButton>
                     
 
                 <IconButton>
-                    <SettingsOutlinedIcon/>
+                    <FilterNoneIcon fontSize="small" onClick={() => expandApp()}/>
                     
                 </IconButton>
                     
                 <IconButton>
-                    <PersonOutlinedIcon/>
+                    <CloseIcon onClick={() => closeApp()}/>
                     
                 </IconButton>
             </Box>
