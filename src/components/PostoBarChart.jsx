@@ -1,25 +1,15 @@
 import { ResponsiveBar } from "@nivo/bar";
 import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
-import { useState, useEffect } from "react";
-const postoExample = [
-    {
-        "qtd": 1,
-        "nm_posto": "Cabo",
-        "id_posto": 2
-    },
-    {
-        "qtd": 13,
-        "nm_posto": "Soldado",
-        "id_posto": 1
-    }
-]
+
+
+
 const PostoBarChart = ({ postoData }) => {
 
-    console.log(postoData.map(item => { return { [item.nm_posto]: item.qtd } }));
+    // console.log(postoData.map(item => { return { [item.nm_posto]: item.qtd } }));
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-    console.log(Object.keys(colors));
+    // console.log(Object.keys(colors));
 
     return (
         <ResponsiveBar

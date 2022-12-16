@@ -1,16 +1,12 @@
 import { MenuItem } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
-import { Typography, useTheme } from "@mui/material";
+import { colors, Typography, useTheme } from "@mui/material";
 import { useState } from "react";
 import { tokens } from "../../theme";
 import  HomeOutlinedIcon  from "@mui/icons-material/HomeOutlined";
 import  PeopleOutlinedIcon  from "@mui/icons-material/PeopleOutlined";
 import  ContactsOutlinedIcon  from "@mui/icons-material/ContactsOutlined";
-import  CalendarTodayOutlinedIcon  from "@mui/icons-material/CalendarTodayOutlined";
 import  HelpOutlinedIcon  from "@mui/icons-material/HelpOutlined";
-import  PieChartOutlineOutlinedIcon  from "@mui/icons-material/PieChartOutlineOutlined";
-import  TimelineOutlinedIcon  from "@mui/icons-material/TimelineOutlined";
-import  BarChartOutlinedIcon  from "@mui/icons-material/MapOutlined";
 import  GroupRemoveIcon from '@mui/icons-material/GroupRemove';
 import  PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
@@ -46,6 +42,14 @@ const All_Item=()=>{
                 setSelected={setSelected}
             />
 
+            <Typography
+              variant="h6"
+              color={colors.blue[300]}
+              sx={{ m: "15px 0 5px 20px" }}
+            >
+              Dados
+            </Typography>
+
             <Item
                 title = "Aposentadoria"
                 to ="/aposentadoria"
@@ -61,6 +65,14 @@ const All_Item=()=>{
                 selected={selected}
                 setSelected={setSelected}
             />
+
+            <Typography
+              variant="h6"
+              color={colors.blue[300]}
+              sx={{ m: "15px 0 5px 20px" }}
+            >
+              Configurações
+            </Typography>
 
             <Item
                 title = "Adicionar Pessoa"
@@ -86,13 +98,14 @@ const All_Item=()=>{
                 setSelected={setSelected}
             />
 
-            <Item
-                title = "Calendar"
-                to ="/calendar"
-                icon={<CalendarTodayOutlinedIcon/>}
-                selected={selected}
-                setSelected={setSelected}
-            />
+
+            <Typography
+              variant="h6"
+              color={colors.blue[300]}
+              sx={{ m: "15px 0 5px 20px" }}
+            >
+              Informações
+            </Typography>
 
             <Item
                 title = "FAQ"
@@ -101,33 +114,6 @@ const All_Item=()=>{
                 selected={selected}
                 setSelected={setSelected}
             />
-
-            <Item
-                title = "Bar Chart"
-                to ="/bar"
-                icon={<BarChartOutlinedIcon/>}
-                selected={selected}
-                setSelected={setSelected}
-            />
-
-            <Item
-                title = "Pie Chart"
-                to ="/pie"
-                icon={<PieChartOutlineOutlinedIcon/>}
-                selected={selected}
-                setSelected={setSelected}
-            />
-
-            <Item
-                title = "Line Chart"
-                to ="/line"
-                icon={<TimelineOutlinedIcon/>}
-                selected={selected}
-                setSelected={setSelected}
-            />
-
-            
-
         </>
     );
 };

@@ -1,26 +1,12 @@
 import { ResponsiveBar } from "@nivo/bar";
 import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
-import { useEffect, useState } from "react";
 
-const CursoBarChart = ({cursoData}) => {
-    const [data, setData] = useState([]);
+
+const AfastamentoBarChart = ({ afastamentoData }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-    console.log(cursoData);
-    useEffect(()=>{
-        let dt = []
-        let keys = Object.keys(cursoData);
-        for(let i = 0;i<keys.length;i++){
-            let dt2 = {}
-            dt2[keys[i]] = cursoData[keys[i]]
-            dt2["nm_curso"] = keys[i]
-            dt2["id"] = i
-            dt.push(dt2)
-        }
-        setData(dt)
-        console.log(dt);
-    },[cursoData])
+    console.log(afastamentoData);
     return (
         <ResponsiveBar
             // aqui vc tem que passar um vetor de objetos, cada objeto nesse vetor representa uma barra.
@@ -30,7 +16,12 @@ const CursoBarChart = ({cursoData}) => {
             
             //mesmo objeto -> barra estacada, objeto diferente-> barra do lado
             
-            data={data ? data: []}
+            data={afastamentoData ? afastamentoData.map(item=>{
+                return{
+                    [item.nm_tipo_afastamento]: item.qtd,
+                    nm_tipo_afastamento: item.nm_tipo_afastamento
+                }
+            }) : []}
             theme={{
                 axis: {
                     domain: {
@@ -59,8 +50,8 @@ const CursoBarChart = ({cursoData}) => {
                     },
                 },
             }}
-            keys={data? data.map(item => { return item.nm_curso }):[]}
-            indexBy="nm_curso"
+            keys={afastamentoData? afastamentoData.map(item => { return item.nm_tipo_afastamento }):[]}
+            indexBy="nm_tipo_afastamento"
             margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
             padding={0.3}
             valueScale={{ type: "linear" }}
@@ -69,12 +60,12 @@ const CursoBarChart = ({cursoData}) => {
             // define o estilo das barras
             // eu fiz um map pra haver um estilo diferente pra cada barra
             defs={
-                data
-                    ? data.map((item) => {
+                afastamentoData
+                    ? afastamentoData.map((item) => {
                         return {
-                            id: item.nm_curso,
+                            id: item.nm_tipo_afastamento,
                             type: 'solid',
-                            color: colors[Object.keys(colors)[item.id % Object.keys(colors).length]][100] , //  aqui eu pego cores diferentes pra cada bara, mas se quiser uma cor só deixa fixo, eu fico fazendo um modulo pra pegar uma cor diferente (%)
+                            color: colors[Object.keys(colors)[item.id_tipo_afastamento % Object.keys(colors).length]][100] , //  aqui eu pego cores diferentes pra cada bara, mas se quiser uma cor só deixa fixo, eu fico fazendo um modulo pra pegar uma cor diferente (%)
                             background: "inherit",
                             size: 4,
                             padding: 1,
@@ -86,13 +77,13 @@ const CursoBarChart = ({cursoData}) => {
             // aqui vc tem que passar um vetor de objetos, cada objeto nesse vetor representa uma barra.
             // estes objetos dão o valor do estilo, definido em def
             fill={
-                data
-                    ? data.map((item) => {
+                afastamentoData
+                    ? afastamentoData.map((item) => {
                         return {
                             match: {
-                                id: item.nm_curso,
+                                id: item.nm_tipo_afastamento,
                             },
-                            id: item.nm_curso,
+                            id: item.nm_tipo_afastamento,
                         };
                     })
                     : []
@@ -104,7 +95,7 @@ const CursoBarChart = ({cursoData}) => {
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: "Idioma",
+                legend: "afastamento",
                 legendPosition: "middle",
                 legendOffset: 32,
             }}
@@ -152,4 +143,4 @@ const CursoBarChart = ({cursoData}) => {
     )
 }
 
-export default CursoBarChart;
+export default AfastamentoBarChart;

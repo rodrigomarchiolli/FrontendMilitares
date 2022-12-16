@@ -1,8 +1,11 @@
+
 import { Box, Button, FormLabel, TextField, Typography, useTheme } from "@mui/material";
+
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataTeam } from "../../data/mockData";
 import Header from "../../components/Header";
+
 import { useState, useEffect } from "react";
 import Axios from "axios";
 import { API_URL } from "../../configs";
@@ -316,6 +319,7 @@ const Aposentadoria = () => {
             </Box>
         </Box>
     );
+
 };
 
 export default Aposentadoria;

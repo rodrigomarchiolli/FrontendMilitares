@@ -1,8 +1,7 @@
 import { ResponsivePie } from "@nivo/pie";
 import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
-import { useState } from "react";
-import { mockPieData as mockData } from "../data/mockData";
+
 
 
 const GeneroPieChart = ({generoData}) => {
@@ -10,7 +9,7 @@ const GeneroPieChart = ({generoData}) => {
     //const [data, setData ] = useState(mockData)
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-    console.log(generoData);
+    // console.log(generoData);
     return(
         <ResponsivePie 
         data={generoData}
